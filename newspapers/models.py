@@ -7,14 +7,34 @@ class Newspaper(models.Model):
     content = models.TextField()
     publish_date = models.DateField(auto_now_add=True)
     topic = models.ForeignKey(
-        Topic, on_delete=models.CASCADE, related_name='newspapers'
+        "Topic",
+        on_delete=models.CASCADE,
+        related_name="newspapers"
     )
     publishers = models.ManyToManyField(
-        Redactor, related_name='newspapers'
+        "Redactor",
+        related_name="newspapers"
     )
 
     class Meta:
-        ordering = ['title']
+        ordering = ("title",)
 
     def __str__(self):
         return self.title
+
+
+class Topic(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    class Meta:
+        ordering = ("name",)
+
+    def __str__(self):
+        return self.name
+
+
+class Redactor(AbstractUser):
+    years_of_experience = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ("username",)
