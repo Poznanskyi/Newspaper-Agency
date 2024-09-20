@@ -28,12 +28,12 @@ class RedactorAdmin(UserAdmin):
 class NewspaperAdmin(admin.ModelAdmin):
     search_fields = ("title",)
     list_filter = ("topic",)
-#    list_display = ("title", "publish_date", "topic")  Поля, які я додам пізніше
-#    ordering = ("publish_date",)
+    list_display = ("title", "publish_date", "topic")
+    ordering = ("publish_date",)
 
 
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
     search_fields = ("name",)
-#    list_display = ("name",)  Додам пізніше
-#    ordering = ("name",)
+    list_display = ("name",)
+    ordering = ("name",)

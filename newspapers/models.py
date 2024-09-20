@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group, Permission
 
 
 class Newspaper(models.Model):
@@ -35,6 +35,20 @@ class Topic(models.Model):
 
 class Redactor(AbstractUser):
     years_of_experience = models.IntegerField(default=0)
+
+    groups = models.ManyToManyField(
+        Group,
+        related_name="redactor_set",
+        blank=True,
+        verbose_name="groups",
+    )
+
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name="redactor_set",
+        blank=True,
+        verbose_name="user permissions",
+    )
 
     class Meta:
         ordering = ("username",)
