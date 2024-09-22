@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{ newspaper.title }}</h2>
+    <p>{{ newspaper.content }}</p>
+    <a href="{% url 'newspapers:newspaper_update' newspaper.pk %}">Edit</a>
+    <a href="{% url 'newspapers:newspaper_list' %}">Back to Newspaper List</a>
+{% endblock %}

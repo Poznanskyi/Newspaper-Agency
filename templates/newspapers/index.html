@@ -1,41 +1,13 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block content %}
-<div class="row">
-    <!-- Redactors Card -->
-    <div class="col-md-4">
-        <a href="{% url 'newspapers:redactors' %}">
-            <div class="card bg-info text-white">
-                <div class="card-body">
-                    <h6>Redactors</h6>
-                    <h2>{{ num_redactors }}</h2>
-                </div>
-            </div>
-        </a>
-    </div>
-    
-    <!-- Topics Card -->
-    <div class="col-md-4">
-        <a href="{% url 'newspapers:topics' %}">
-            <div class="card bg-success text-white">
-                <div class="card-body">
-                    <h6>Topics</h6>
-                    <h2>{{ num_topics }}</h2>
-                </div>
-            </div>
-        </a>
-    </div>
-    
-    <!-- Newspapers Card -->
-    <div class="col-md-4">
-        <a href="{% url 'newspapers:newspapers' %}">
-            <div class="card bg-warning text-dark">
-                <div class="card-body">
-                    <h6>Newspapers</h6>
-                    <h2>{{ num_newspapers }}</h2>
-                </div>
-            </div>
-        </a>
-    </div>
+<h2>Dashboard</h2>
+<div>
+    <h3>Statistics</h3>
+    <ul>
+        <li>Total Redactors: {{ num_redactors }}</li>
+        <li>Total Topics: {{ num_topics }}</li>
+        <li>Total Newspapers: {{ num_newspapers }}</li>
+    </ul>
 </div>
-{% endblock content %}
+{% endblock %}
