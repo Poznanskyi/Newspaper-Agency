@@ -50,3 +50,17 @@ h2 {
 .read-more:hover {
     background: #0056b3;
 }
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #007BFF; /* синій фон */
+    color: white; /* білий текст */
+    text-decoration: none; /* без підкреслення */
+    border-radius: 5px; /* заокруглення */
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3; /* темніший синій при наведенні */
+}
