@@ -1,10 +1,32 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Newspaper Agency{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    <header>
+        <h1>My Newspaper Agency</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'newspaper_list' %}">Newspapers</a></li>
+                <li><a href="{% url 'topic_list' %}">Topics</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        {% block content %}
+        <!-- Основний вміст сторінки буде вставлений тут -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} My Newspaper Agency</p>
+    </footer>
 </body>
 </html>
