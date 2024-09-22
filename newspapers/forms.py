@@ -1,4 +1,5 @@
 from django import forms
+from .models import Newspaper, Redactor
 
 
 class RedactorSearchForm(forms.Form):
@@ -17,6 +18,18 @@ class NewspaperSearchForm(forms.Form):
         label="Search by title",
         widget=forms.TextInput(attrs={'placeholder': 'Enter title', 'class': 'form-control'})
     )
+
+
+class NewspaperForm(forms.ModelForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={"rows": 10, "class": "form-control"}))
+    publishers = forms.ModelMultipleChoiceField(
+        queryset=Redactor.objects.all(),
+        widget=forms.CheckboxSelectMultiple(attrs={"class": "form-check"}),
+    )
+
+    class Meta:
+        model = Newspaper
+        fields = ['title', 'content', 'topic', 'publishers']
 
 
 class TopicSearchForm(forms.Form):

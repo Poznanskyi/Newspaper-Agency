@@ -1,10 +1,10 @@
-from django.views.generic import ListView
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 
 from .models import Newspaper, Topic, Redactor
-from .forms import RedactorSearchForm, NewspaperSearchForm, TopicSearchForm
+from .forms import RedactorSearchForm, NewspaperSearchForm, TopicSearchForm, NewspaperForm
 
 
 def index(request):
@@ -19,7 +19,7 @@ def index(request):
 class RedactorListView(LoginRequiredMixin, generic.ListView):
     model = Redactor
     paginate_by = 10
-    template_name = 'newspapers/redactor_list.html'  # Вкажи свій шаблон
+    template_name = 'newspapers/redactor_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -35,6 +35,11 @@ class RedactorListView(LoginRequiredMixin, generic.ListView):
             queryset = queryset.filter(username__icontains=form.cleaned_data["username"])
 
         return queryset
+
+
+class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Redactor
+    template_name = 'newspapers/redactor_detail.html'
 
 
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
@@ -57,18 +62,37 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
 
         return queryset
 
-class TopicListView(LoginRequiredMixin, generic.ListView):
-    model = Topic
-    paginate_by = 10  # Кількість тем на сторінці
-    template_name = 'your_template_path/topic_list.html'  # Вкажи свій шаблон
+
+class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Newspaper
+    template_name = 'newspapers/newspaper_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["search_form"] = TopicSearchForm()  # Додай форму для пошуку, якщо потрібно
         return context
 
-    def get_queryset(self):
-        queryset = Topic.objects.all()
-        # Додатковий код для фільтрації за формою пошуку, якщо вона є
-        return queryset
 
+class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Newspaper
+    form_class = NewspaperForm
+    template_name = 'newspapers/newspaper_form.html'
+    success_url = reverse_lazy("newspapers:newspaper_list")
+
+
+class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Newspaper
+    form_class = NewspaperForm
+    template_name = 'newspapers/newspaper_form.html'
+
+    def get_success_url(self):
+        return reverse("newspapers:newspaper_detail", args=(self.get_object().id,))
+
+
+class TopicListView(LoginRequiredMixin, generic.ListView):
+    model = Topic
+
+
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Topic
+    fields = ("name",)
+    success_url = reverse_lazy("newspapers:topics")
