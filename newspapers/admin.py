@@ -1,39 +1,53 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from newspapers.models import Newspaper, Topic, Redactor
+from .models import Redactor, Topic, Newspaper
 
 
 @admin.register(Redactor)
-class RedactorAdmin(UserAdmin):
-    list_display = UserAdmin.list_display + ("years_of_experience",)
-    fieldsets = UserAdmin.fieldsets + (
-        (("Additional info", {"fields": ("years_of_experience",)}),)
+class RedactorAdmin(admin.ModelAdmin):
+    list_display = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "years_of_experience",
     )
+    list_filter = ("is_staff", "is_superuser", "is_active", "groups")
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
-            "Additional info",
             {
+                "classes": ("wide",),
                 "fields": (
+                    "username",
+                    "password1",
+                    "password2",
                     "first_name",
                     "last_name",
+                    "email",
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
                     "years_of_experience",
-                )
+                ),
             }
         ),
     )
-
-
-@admin.register(Newspaper)
-class NewspaperAdmin(admin.ModelAdmin):
-    search_fields = ("title",)
-    list_filter = ("topic",)
-    list_display = ("title", "publish_date", "topic")
-    ordering = ("publish_date",)
+    search_fields = ("username", "first_name", "last_name", "email")
+    ordering = ("username",)
 
 
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
-    search_fields = ("name",)
     list_display = ("name",)
-    ordering = ("name",)
+    search_fields = ("name",)
+
+
+@admin.register(Newspaper)
+class NewspaperAdmin(admin.ModelAdmin):
+    list_display = ("title", "published_date")
+    list_filter = ("published_date", "topics")
+    search_fields = ("title", "content")
+    filter_horizontal = ("topics", "publishers")

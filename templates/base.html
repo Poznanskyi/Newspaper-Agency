@@ -1,32 +1,39 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Newspaper Agency{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block title %}Newspaper{% endblock title %}</title>
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="/static/assets/img/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700">
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link id="pagestyle" href="/static/assets/css/material-kit.css?v=3.0.0" rel="stylesheet">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% include "includes/navigation.html" %}
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            margin-top: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>My Newspaper Agency</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'newspapers:newspaper_list' %}">Newspapers</a></li>
-                <li><a href="{% url 'newspapers:topic_list' %}">Topics</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        {% block content %}
-        <!-- Основний вміст сторінки буде вставлений тут -->
-        {% endblock %}
-    </main>
-
-    <footer>
-        <p>&copy; {{ current_year }} My Newspaper Agency</p>
-    </footer>
+    <div class="container">
+        {% block content %}{% endblock content %}
+    </div>
 </body>
 </html>

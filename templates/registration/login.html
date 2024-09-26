@@ -1,10 +1,44 @@
-{% extends 'base.html' %}
-
+{% extends "layouts/base-fullscreen.html" %}
+{% block title %}Sign In{% endblock %}
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
-{% endblock %}
+    <span class="mask bg-gradient-dark opacity-6"></span>
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-4 col-md-8 col-12 mx-auto">
+                <div class="card">
+                    <div class="card-header text-center bg-gradient-primary text-white">
+                        <h4>Newspaper</h4>
+                        <p>
+                            {% if msg %}
+                                {{ msg | safe }}
+                            {% else %}
+                                You need to Login
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.GET.next }}">
+                            <div class="mb-3">
+                                <label class="form-label">Username</label>
+                                {{ form.username }}
+                                <span class="text-danger">{{ form.username.errors }}</span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                {{ form.password }}
+                                <span class="text-danger">{{ form.password.errors }}</span>
+                            </div>
+                            <button type="submit" class="btn bg-gradient-primary w-100">Sign In</button>
+                            <p class="mt-4 text-center">
+                                Don't have an account? 
+                                <a href="{% url 'register' %}" class="text-primary">Sign Up</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

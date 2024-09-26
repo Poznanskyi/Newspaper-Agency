@@ -1,0 +1,36 @@
+{% load crispy_forms_field %}
+<style>
+    .disabled a.page-link {
+        display: none;
+    }
+</style>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+      <a class="page-link" 
+         href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"
+         tabindex="-1" aria-disabled="{% if not page_obj.has_previous %}true{% else %}false{% endif %}">←</a>
+    </li>
+    {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" 
+           href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+      </li>
+    {% endif %}
+    <li class="page-item">
+      <a class="page-link" 
+         href="?page={{ page_obj.number }}#">{{ page_obj.number }}</a>
+    </li>
+    {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" 
+           href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+      </li>
+    {% endif %}
+    <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+      <a class="page-link" 
+         href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}"
+         aria-disabled="{% if not page_obj.has_next %}true{% else %}false{% endif %}">→</a>
+    </li>
+  </ul>
+</nav>

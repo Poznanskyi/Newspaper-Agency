@@ -1,42 +1,57 @@
 from django import forms
-from .models import Newspaper, Redactor
+
+from django.contrib.auth.forms import UserCreationForm
+
+from newspapers.models import Redactor, Topic, Newspaper, ContactForm
 
 
-class RedactorSearchForm(forms.Form):
-    username = forms.CharField(
-        max_length=255,
-        required=False,
-        label="Search by username",
-        widget=forms.TextInput(attrs={'placeholder': 'Enter username', 'class': 'form-control'})
-    )
+class RegistrationForm(UserCreationForm):
+    email = forms.EmailField()
 
-
-class NewspaperSearchForm(forms.Form):
-    title = forms.CharField(
-        max_length=255,
-        required=False,
-        label="Search by title",
-        widget=forms.TextInput(attrs={'placeholder': 'Enter title', 'class': 'form-control'})
-    )
+    class Meta:
+        model = Redactor
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "password1",
+            "password2",
+        ]
 
 
 class NewspaperForm(forms.ModelForm):
-    content = forms.CharField(widget=forms.Textarea(attrs={"rows": 10, "class": "form-control"}))
     publishers = forms.ModelMultipleChoiceField(
         queryset=Redactor.objects.all(),
-        widget=forms.CheckboxSelectMultiple(attrs={"class": "form-check"}),
+        widget=forms.CheckboxSelectMultiple,
+        label="Choose a publishers",
+    )
+    topics = forms.ModelMultipleChoiceField(
+        queryset=Topic.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        label="Choose a topic",
     )
 
     class Meta:
         model = Newspaper
-        fields = ['title', 'content', 'topic', 'publishers']
+        fields = "__all__"
 
 
-class TopicSearchForm(forms.Form):
-    name = forms.CharField(
-        max_length=255,
-        required=False,
-        label="Search by name",
-        widget=forms.TextInput(attrs={'placeholder': 'Enter topic name', 'class': 'form-control'
-        })
-    )
+class TopicForm(forms.ModelForm):
+    class Meta:
+        model = Topic
+        fields = ["name"]
+
+
+class TopicUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Topic
+        fields = [
+            "name",
+        ]
+
+
+class ContactFormForm(forms.ModelForm):
+    class Meta:
+        model = ContactForm
+        fields = ["name", "email", "message"]
