@@ -58,7 +58,7 @@ class Newspaper(models.Model):
         return ", ".join(f"{redactor.username}" for redactor in self.publishers.all())
 
 
-class ContactForm(models.Model):
+class SupportForm(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField()

@@ -2,7 +2,7 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from newspapers.models import Redactor, Newspaper, Topic
@@ -11,6 +11,7 @@ from newspapers.forms import (
     TopicForm,
     TopicUpdateForm,
     NewspaperForm,
+    NewspaperSearchForm,
 )
 
 
@@ -22,8 +23,9 @@ def register(request):
             login(request, user)
             return redirect("/")
     else:
-        form = RegistrationForm
-        return render(request, "registration/register.html", {"form": form})
+        form = RegistrationForm()
+
+    return render(request, "registration/register.html", {"form": form})
 
 
 class PostSearchView(generic.ListView):
@@ -101,12 +103,17 @@ class TopicsCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("newspapers:topic-list")
 
     def form_valid(self, form):
-        responce = super().form_valid(form)
+        response = super().form_valid(form)
         self.object = form.save()
         newspapers = form.cleaned_data.get("newspapers")
         if newspapers:
-            self.object.newspapers.add(*newspapers)
-        return responce
+            valid_newspapers = [
+                newspaper for newspaper in newspapers if
+                Newspaper.objects.filter(pk=newspaper.pk).exists()
+            ]
+            self.object.newspapers.add(*valid_newspapers)
+
+        return response
 
 
 class TopicsUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -130,3 +137,42 @@ class TopicsDetailView(generic.DetailView):
 def custom_404(request, exception):
     context = {"title": "Page not found", "error": f"Not found {request.path}"}
     return render(request, "404.html", context=context, status=404)
+
+
+class NewspaperListView(LoginRequiredMixin, generic.ListView):
+    model = Newspaper
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = self.request.GET.get("title", "")
+        context["search_form"] = NewspaperSearchForm(initial={"title": title})
+        return context
+
+    def get_queryset(self):
+        form = NewspaperSearchForm(self.request.GET)
+
+        queryset = super().get_queryset().select_related("topic")
+        if form.is_valid():
+            return queryset.filter(title__icontains=form.cleaned_data["title"])
+        return queryset
+
+
+class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Newspaper
+
+
+class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Newspaper
+    form_class = NewspaperForm
+    success_url = reverse_lazy("newspapers:newspapers")
+
+
+class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Newspaper
+    form_class = NewspaperForm
+
+    def get_success_url(self):
+        return reverse(
+            "newspapers:newspaper-detail", args=(self.get_object().id,)
+        )
