@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8b4ac7c8-c882-4c09-9619-101806e1c15b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../newspapers/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../newspapers/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../newspapers/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../newspapers/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../newspapers/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../newspapers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../newspapers/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../newspapers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../newspapers/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../newspapers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../newspapers/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/newspapers/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/newspapers/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/newspapers/newspaper_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/newspapers/newspaper_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/newspapers/newspaper_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/newspapers/newspaper_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/newspapers/newspaper_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/newspapers/newspaper_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/newspapers/topic_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/newspapers/topic_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/newspapers/topic_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/newspapers/topic_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/registration/login.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2mYPpKIypJhYehnVrHeXJR4HfGc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "C:/Users/pozna/PycharmProjects/todo-list",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.347" />
+        <option value="bundled-python-sdk-c2d6afa66fbe-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.347" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8b4ac7c8-c882-4c09-9619-101806e1c15b" name="Changes" comment="" />
+      <created>1727250718817</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727250718817</updated>
+      <workItem from="1727250720025" duration="125000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
