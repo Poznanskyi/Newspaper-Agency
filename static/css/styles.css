@@ -54,13 +54,13 @@ h2 {
 .btn {
     display: inline-block;
     padding: 10px 15px;
-    background: #007BFF; /* синій фон */
-    color: white; /* білий текст */
-    text-decoration: none; /* без підкреслення */
-    border-radius: 5px; /* заокруглення */
+    background: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
     transition: background 0.3s;
 }
 
 .btn:hover {
-    background: #0056b3; /* темніший синій при наведенні */
+    background: #0056b3;
 }
