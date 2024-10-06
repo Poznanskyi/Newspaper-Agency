@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET-KEY', 'django-insecure-&yotx%#ria7dvb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://newspaper-agency-cict.onrender.com/']
 
 
 # Application definition
