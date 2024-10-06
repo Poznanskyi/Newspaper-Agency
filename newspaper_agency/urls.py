@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler404
-from newspapers.views import register, PostSearchView
+from newspapers.views import register, PostSearchView, PostsListView
+
 
 handler404.handler404 = "newspapers.views.custom_404"
 
@@ -27,4 +28,5 @@ urlpatterns = [
     path("register/", register, name="register"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("search/", PostSearchView.as_view(), name="posts-search"),
+    path('posts/', PostsListView.as_view(), name='posts-list'),
 ]

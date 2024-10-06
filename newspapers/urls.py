@@ -2,6 +2,7 @@ from django.urls import path
 
 from newspapers import views
 
+
 urlpatterns = [
     path("", views.index, name="index"),
     path("posts/", views.PostsListView.as_view(), name="posts-list"),

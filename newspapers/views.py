@@ -21,7 +21,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("/")
+            return redirect("newspapers:index")
     else:
         form = RegistrationForm()
 
@@ -66,6 +66,7 @@ def index(request):
 class PostsListView(generic.ListView):
     model = Newspaper
     paginate_by = 8
+    success_url = reverse_lazy("newspapers:posts-list")
 
 
 class PostsCreateView(LoginRequiredMixin, generic.CreateView):
@@ -90,6 +91,7 @@ class PostsDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class PostsDetailView(generic.DetailView):
     model = Newspaper
+    success_url = reverse_lazy("newspapers:posts-list")
 
 
 class TopicsListView(generic.ListView):
@@ -111,7 +113,7 @@ class TopicsCreateView(LoginRequiredMixin, generic.CreateView):
                 newspaper for newspaper in newspapers if
                 Newspaper.objects.filter(pk=newspaper.pk).exists()
             ]
-            self.object.newspapers.add(*valid_newspapers)
+            self.object.newspapers.set(*valid_newspapers)
 
         return response
 

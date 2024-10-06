@@ -1,66 +1,115 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
-    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.header {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.header h1 {
+    margin: 1%;
+    font-size: 4.5rem;
+}
+
+.header .btn {
+    background-color: #e91e63;
+    color: white;
+    padding: 10px 35px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+.header .btn:hover {
+    background-color: #c2185b;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.newspaper-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.newspaper-card {
+.card {
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    transition: transform 0.2s;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
 }
 
-.newspaper-card:hover {
-    transform: scale(1.05);
+#count-stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
 }
 
-.newspaper-card h3 {
+ .count-stats div {
+     flex: 1;
+     padding: 20px;
+ }
+
+ .count-stats h1 {
+     font-size: 3rem;
+     margin: 0;
+     color: #343a40;
+ }
+
+.count-stats h5 {
+    color: #6c757d;
+           margin-top: 10px;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+}
+
+footer h5 {
     margin: 0;
 }
 
-.read-more {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 15px;
-    background: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+
+.navbar {
+    padding: 15px;
 }
 
-.read-more:hover {
-    background: #0056b3;
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 15px;
-    background: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
+.nav-item {
+    margin-right: 20px;
 }
 
-.btn:hover {
-    background: #0056b3;
+.nav-link {
+    color: #343a40;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #e91e63;
+}
+
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+    .nav-item {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }

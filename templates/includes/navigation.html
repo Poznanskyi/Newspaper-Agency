@@ -3,10 +3,13 @@
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/posts/">News</a>
+                    <a class="nav-link" href="{% url 'newspapers:posts-list' %}">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/topic/">Topics</a>
+                    <a class="nav-link" href="{% url 'newspapers:topic-list' %}">Topics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
                 </li>
                 <li class="nav-item ml-auto">
                     {% if request.user.is_authenticated %}
