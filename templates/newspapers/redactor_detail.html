@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Redactor Details</h2>
+<h3>{{ object.username }}</h3>
+<p>Years of Experience: {{ object.years_of_experience }}</p>
+
+<h4>Newspapers:</h4>
+<ul>
+    {% for newspaper in newspapers %}
+        <li>{{ newspaper.title }} (Published on: {{ newspaper.publish_date }})</li>
+    {% empty %}
+        <li>No newspapers found for this redactor.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'newspapers:redactor_list' %}">Back to Redactors</a>
+{% endblock %}

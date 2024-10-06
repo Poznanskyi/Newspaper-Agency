@@ -1,0 +1,115 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f8f9fa;
+}
+
+.header {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.header h1 {
+    margin: 1%;
+    font-size: 4.5rem;
+}
+
+.header .btn {
+    background-color: #e91e63;
+    color: white;
+    padding: 10px 35px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+.header .btn:hover {
+    background-color: #c2185b;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#count-stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+ .count-stats div {
+     flex: 1;
+     padding: 20px;
+ }
+
+ .count-stats h1 {
+     font-size: 3rem;
+     margin: 0;
+     color: #343a40;
+ }
+
+.count-stats h5 {
+    color: #6c757d;
+           margin-top: 10px;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+}
+
+footer h5 {
+    margin: 0;
+}
+
+
+.navbar {
+    padding: 15px;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: #343a40;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #e91e63;
+}
+
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+    .nav-item {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
